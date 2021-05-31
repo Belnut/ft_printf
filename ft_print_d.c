@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_print_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 21:50:43 by hwon              #+#    #+#             */
-/*   Updated: 2021/05/25 23:21:46 by hwon             ###   ########.fr       */
+/*   Updated: 2021/05/31 18:37:29 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static size_t	get_count(unsigned int num, int digit)
+#include "ft_printf.h"
+
+static size_t	get_count(unsigned int num, int digit, bool sign)
 {
 	size_t	size;
-	bool	sign;
 
 	size = 0;
 	if (num == 0)
@@ -23,6 +24,8 @@ static size_t	get_count(unsigned int num, int digit)
 		num /= digit;
 		size++;
 	}
+	if (sign)
+		size++;
 	return (size);
 }
 
@@ -37,16 +40,18 @@ static size_t	write_num(unsigned int num, const char *digit, int digit_len)
 	return (size);
 }
 
-int				ft_putint(int num, int digit, e_align align, int fill)
+int				ft_putint(int num, size_t size, int fill_char)
 {
 	int		size;
 
-	size = 0;
-	if (num < 0)
-		size = 1;
-
+	size = get_count(num, digit, num < 0);
+	return 0;
 }
-
-int				ft_putuint(unsigned int num, int digit, e_align align, int fill)
+/*
+int				ft_putuint(unsigned int num, int digit, const char *format)
 {
+	size_t	size;
+
+	size = get_count(num, digit, num < 0);
 }
+*/
