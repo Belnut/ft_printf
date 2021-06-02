@@ -6,41 +6,41 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 22:26:34 by hwon              #+#    #+#             */
-/*   Updated: 2021/05/19 21:54:05 by hwon             ###   ########.fr       */
+/*   Updated: 2021/06/02 23:52:41 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-//add print number function()
-//	need int, long
-
-//add print float function()
-//	need float, double
-
-//add print stinrg function()
-//	need strings, check null value;
-
-//add print charactor function()
-//	only use write(1, &c, 1);
-
-int		ft_putnbr(int num);
-
-
-int	ft_check_format(const char *format)
+int		ft_vprintf(t_format_info *info, va_list *va)
 {
-	int	format_count;
+	int	rst;
+	int type;
 
-	uif
-
+	if (!info || !va || info->type == 0)
+		return (0);
+	type = info->type;
+	if (type == 'd' || type == 'i' || type == 'u' 
+			|| type == 'x' || type == 'X')
+		rst += ft_putnbr_info(info, va_arg(*va, int));
+	else if (type == 'c')
+		rst += ft_putchar_info(info, va_arg(*va, int));
+	else if (type == 's')
+		rst += ft_putstr_info(info, va_arg(*va, char *));
+	else if (type == '%')
+		rst += ft_putchar_info(info, '%');
+	else if (type == 'p')
+		rst += ft_putaddr_info(info, va_arg(*va, void *)); 
+	return (rst);
 }
 
-int	ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
-	va_list apE
-	int		arg_count;
-	
-	count = printf("%d%d%d\n", 1, 2, 3, 4, 5);
-	count = printf("%d%d%d\n", 1, 2, 3, 4, 5);
-	va_start(ap, );
+	va_list		ap;
+	int			ret;
+
+	va_start(ap, format);
+	ret = ft_format_parsing(format, ap);
+	va_end(ap);
+	return (ret);
 }

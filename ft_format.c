@@ -6,7 +6,7 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 17:15:05 by hwon              #+#    #+#             */
-/*   Updated: 2021/06/01 17:28:43 by hwon             ###   ########.fr       */
+/*   Updated: 2021/06/03 00:09:09 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ t_format_info	*create_format_info()
 	info->width = 0;
 	info->align = RIGHT;
 	info->filled = ' ';
+	info->format_len = 0;
 	return (info);
 }
 
-void			delete_format_info(t_format_info **info)
+t_format_info	*delete_format_info(t_format_info **info)
 {
 	if (*info == 0)
 		return (0);
 	free (*info);
 	*info = 0;
+	return (0);
 }

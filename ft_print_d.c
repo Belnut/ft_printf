@@ -6,7 +6,7 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 21:50:43 by hwon              #+#    #+#             */
-/*   Updated: 2021/05/31 18:37:29 by hwon             ###   ########.fr       */
+/*   Updated: 2021/06/03 00:04:37 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ static size_t	write_num(unsigned int num, const char *digit, int digit_len)
 	size = 0;
 	if (num >= digit_len)
 		size += write_num(num / digit_len, digit, digit_len);
-	size += write(1, digit[num % digit_len], 1);
+	size += write(1, &digit[num % digit_len], 1);
 	return (size);
 }
 
-int				ft_putint(int num, size_t size, int fill_char)
+int				ft_putint(int num, int fill_char)
 {
 	int		size;
 
-	size = get_count(num, digit, num < 0);
+	size = get_count(num, 10, num < 0);
 	return 0;
 }
 /*
