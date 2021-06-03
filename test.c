@@ -28,4 +28,6 @@ int	main()
 	printf("%d\n", -0x10);
 	if (0x10 == 16)
 		printf("%020s\n","hello world!\n");
+	printf("%020llld\n", LONG_MAX);
+	printf("%+d\n", 0);
 }

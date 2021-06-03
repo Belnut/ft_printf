@@ -34,4 +34,19 @@ int		main()
 	count = printf("%5*c\n", 10, 'c');
 	printf("count = %d\n", count - 1);
 
+	count = printf("%10*0d\n", 10, 'c');
+	printf("count = %d\n", count - 1);
+
+	count = printf("%10*00d\n", 10, 'c');
+	printf("count = %d\n", count - 1);
+	
+	printf("check unused format\n");
+	count = printf("% \n", 'c');
+	printf("count = %d\n", count - 1);
+
+	count = printf("%zzzzzd, %  d\n", 'c', 10);
+	printf("count = %d\n", count - 1);
+
+	count = printf("%0010d\n", 10);
+
 }
