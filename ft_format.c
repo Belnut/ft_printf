@@ -6,19 +6,20 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 17:15:05 by hwon              #+#    #+#             */
-/*   Updated: 2021/06/03 00:09:09 by hwon             ###   ########.fr       */
+/*   Updated: 2021/07/26 19:32:28 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdio.h> /* debug */
+#include "ft_format.h"
 
-t_format_info	*create_format_info()
+t_format_info	*ft_create_format_info(void)
 {
 	t_format_info	*info;
-	
+
 	info = malloc(sizeof(t_format_info));
 	if (!info)
-		return (0);	
+		return (0);
 	info->type = 0;
 	info->width = 0;
 	info->align = RIGHT;
@@ -27,7 +28,19 @@ t_format_info	*create_format_info()
 	return (info);
 }
 
-t_format_info	*delete_format_info(t_format_info **info)
+void	ft_print_format_info(const t_format_info info)
+{
+	printf("format info ------------\n");
+	printf("type : (%c)\n", info.type);
+	printf("width : (%d)\n", info.width);
+	printf("align : (%d)\n", info.align);
+	printf("filled : (%c)\n", info.filled);
+	printf("prec : (%d)\n", info.prec);
+	printf("format_len : (%d)\n", info.format_len);
+	printf("------------------------\n");
+}	
+
+t_format_info	*ft_delete_format_info(t_format_info **info)
 {
 	if (*info == 0)
 		return (0);

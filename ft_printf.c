@@ -6,35 +6,58 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 22:26:34 by hwon              #+#    #+#             */
-/*   Updated: 2021/06/02 23:52:41 by hwon             ###   ########.fr       */
+/*   Updated: 2021/07/26 19:31:58 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		ft_vprintf(t_format_info *info, va_list *va)
+int	ft_vprintf(t_format_info *info, va_list *va)
 {
 	int	rst;
-	int type;
+	int	type;
 
+	rst = 0;
 	if (!info || !va || info->type == 0)
 		return (0);
 	type = info->type;
-	if (type == 'd' || type == 'i' || type == 'u' 
-			|| type == 'x' || type == 'X')
-		rst += ft_putnbr_info(info, va_arg(*va, int));
+	if (type == 'd' || type == 'i' || type == 'u'
+		|| type == 'x' || type == 'X' || type == 'p')
+		rst += ft_putnbr_info(info, va);
 	else if (type == 'c')
-		rst += ft_putchar_info(info, va_arg(*va, int));
+		rst += ft_putchar_info(info, va);
 	else if (type == 's')
-		rst += ft_putstr_info(info, va_arg(*va, char *));
+		rst += ft_putstr_info(info, va);
 	else if (type == '%')
-		rst += ft_putchar_info(info, '%');
-	else if (type == 'p')
-		rst += ft_putaddr_info(info, va_arg(*va, void *)); 
+		rst += write(1, &"%", 1);
 	return (rst);
 }
 
-int		ft_printf(const char *format, ...)
+int	ft_format_parsing(const char *str, va_list ap)
+{
+	int				rst;
+	t_format_info	*info;	
+
+	rst = 0;
+	if (!str)
+		return (rst);
+	while (*str)
+	{
+		if (*str == '%')
+		{
+			info = ft_format_decode(++str);
+			if (!info)
+				break ;
+			str += info->format_len;
+			rst += ft_vprintf(info, &ap);
+			ft_delete_format_info(&info);
+		}
+		else
+			rst += write(1, str++, 1);
+	}
+	return (rst);
+}
+
+int	ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	int			ret;
