@@ -6,7 +6,7 @@
 #    By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 22:17:13 by hwon              #+#    #+#              #
-#    Updated: 2021/07/26 19:38:22 by hwon             ###   ########.fr        #
+#    Updated: 2021/07/26 20:39:28 by hwon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS	= ft_printf.c \
 		  ft_utils.c
 HEADS	= ft_printf.h \
 		  ft_format.h
+
 OBJS	= ${SRCS:.c=.o}
 NAME	= libftprintf.a
 

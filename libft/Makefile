@@ -6,7 +6,7 @@
 #    By: hwon <hwon@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 03:10:18 by hwon              #+#    #+#              #
-#    Updated: 2021/05/11 13:11:29 by hwon             ###   ########.fr        #
+#    Updated: 2021/07/26 20:40:38 by hwon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,15 +46,6 @@ SRCS	= ft_memset.c\
 		  ft_putendl_fd.c\
 		  ft_putnbr_fd.c\
 		  ft_strndup.c
-SRCS_B	= ft_lstnew.c\
-		  ft_lstadd_front.c\
-		  ft_lstsize.c\
-		  ft_lstlast.c\
-		  ft_lstadd_back.c\
-		  ft_lstdelone.c\
-		  ft_lstclear.c\
-		  ft_lstiter.c\
-		  ft_lstmap.c
 OBJS	= ${SRCS:.c=.o}
 OBJS_B	= ${SRCS_B:.c=.o}
 CC		= gcc
@@ -68,9 +59,6 @@ ARFLAGS = rs
 
 $(NAME) : $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-
-bonus : $(OBJS) $(OBJS_B)
-	$(AR) $(ARFLAGS) $(NAME) $^
 
 all : $(NAME)
 

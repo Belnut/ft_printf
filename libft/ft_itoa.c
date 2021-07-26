@@ -6,13 +6,13 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:51:45 by hwon              #+#    #+#             */
-/*   Updated: 2021/05/11 13:08:27 by hwon             ###   ########.fr       */
+/*   Updated: 2021/07/26 19:52:56 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		digit_len(int n)
+int	digit_len(int n)
 {
 	int				len;
 	unsigned int	num;
