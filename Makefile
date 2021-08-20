@@ -6,7 +6,7 @@
 #    By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 22:17:13 by hwon              #+#    #+#              #
-#    Updated: 2021/07/26 20:39:28 by hwon             ###   ########.fr        #
+#    Updated: 2021/08/20 22:57:00 by hwon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,6 @@ $(NAME) : $(OBJS)
 	make -C $(LIBFTDIR)/
 	cp $(LIBFTDIR)/$(LIBFTFILE) $(NAME)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-
-bonus : $(OBJS) $(OBJS_B)
-	$(AR) $(ARFLAGS) $(NAME) $^
 
 all : $(NAME)
 

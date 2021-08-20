@@ -6,7 +6,7 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 22:26:34 by hwon              #+#    #+#             */
-/*   Updated: 2021/08/20 21:07:27 by hwon             ###   ########.fr       */
+/*   Updated: 2021/08/21 00:28:24 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int	vprintf(t_format_info *info, va_list va)
 	int	type;
 
 	rst = 0;
-	if (!info || !va || info->type == 0)
-		return (0);
+	if (!info || !va)
+		return (-1);
 	type = info->type;
 	if (type == 'd' || type == 'i' || type == 'u'
 		|| type == 'x' || type == 'X' || type == 'p')
@@ -35,6 +35,7 @@ static int	vprintf(t_format_info *info, va_list va)
 static int	format_parsing(const char *str, va_list va)
 {
 	int				rst;
+	int				tmp;
 	t_format_info	*info;	
 
 	rst = 0;
@@ -48,7 +49,10 @@ static int	format_parsing(const char *str, va_list va)
 			if (!info)
 				break ;
 			str += info->format_len;
-			rst += vprintf(info, va);
+			tmp = vprintf(info, va);
+			if (tmp == -1)
+				return (-1);
+			rst += tmp;
 			ft_delete_format_info(&info);
 		}
 		else

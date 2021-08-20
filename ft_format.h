@@ -6,7 +6,7 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:50:51 by hwon              #+#    #+#             */
-/*   Updated: 2021/07/26 20:38:19 by hwon             ###   ########.fr       */
+/*   Updated: 2021/08/20 23:07:46 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ enum	e_align
 struct s_format_info
 {
 	char			type;
-	int				width;
-	enum e_align	align;
-	int				filled;
-	int				prec;
 	int				format_len;
 };
 typedef struct s_format_info	t_format_info;
