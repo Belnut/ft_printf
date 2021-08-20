@@ -6,7 +6,7 @@
 #    By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 22:17:13 by hwon              #+#    #+#              #
-#    Updated: 2021/08/20 22:57:00 by hwon             ###   ########.fr        #
+#    Updated: 2021/08/21 00:57:36 by hwon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ test : $(OBJS) $(OBJS_B)
 
 norm :
 	make norm -C $(LIBFTDIR)/
-	norminette -R CheckForbiddenSourceHeader $(SRCS) $(SRCS_B)
+	norminette $(SRCS) $(SRCS_B)
 	norminette -R CheckDefine $(HEADS)
 
 .PHONY: all clean fclean re .c.o norm
