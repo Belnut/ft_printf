@@ -6,12 +6,12 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 22:26:34 by hwon              #+#    #+#             */
-/*   Updated: 2021/07/26 21:40:29 by hwon             ###   ########.fr       */
+/*   Updated: 2021/08/20 21:07:27 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-int	ft_vprintf(t_format_info *info, va_list *va)
+static int	vprintf(t_format_info *info, va_list va)
 {
 	int	rst;
 	int	type;
@@ -32,7 +32,7 @@ int	ft_vprintf(t_format_info *info, va_list *va)
 	return (rst);
 }
 
-int	ft_format_parsing(const char *str, va_list va)
+static int	format_parsing(const char *str, va_list va)
 {
 	int				rst;
 	t_format_info	*info;	
@@ -48,7 +48,7 @@ int	ft_format_parsing(const char *str, va_list va)
 			if (!info)
 				break ;
 			str += info->format_len;
-			rst += ft_vprintf(info, &va);
+			rst += vprintf(info, va);
 			ft_delete_format_info(&info);
 		}
 		else
@@ -63,7 +63,7 @@ int	ft_printf(const char *format, ...)
 	int			ret;
 
 	va_start(ap, format);
-	ret = ft_format_parsing(format, ap);
+	ret = format_parsing(format, ap);
 	va_end(ap);
 	return (ret);
 }

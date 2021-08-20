@@ -6,7 +6,7 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 20:59:49 by hwon              #+#    #+#             */
-/*   Updated: 2021/07/26 19:33:43 by hwon             ###   ########.fr       */
+/*   Updated: 2021/08/20 21:15:54 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static char	*get_digit(int type)
 	return ("0123456789ABCDEF");
 }
 
-static long long	get_va_to_num(va_list *va, int type)
+static long long	get_va_to_num(va_list va, int type)
 {
 	if (type == 'p')
-		return ((long long)va_arg(*va, unsigned long));
+		return ((long long)va_arg(va, unsigned long));
 	else if (type == 'u')
-		return ((long long)va_arg(*va, unsigned int));
-	return ((long long)va_arg(*va, int));
+		return ((long long)va_arg(va, unsigned int));
+	return ((long long)va_arg(va, int));
 }
 
 static int	print_num(long long num, char *digit, t_format_info *info)
@@ -48,7 +48,7 @@ static int	print_num(long long num, char *digit, t_format_info *info)
 	return (len);
 }
 
-int	ft_putnbr_info(t_format_info *info, va_list *va)
+int	ft_putnbr_info(t_format_info *info, va_list va)
 {
 	char		*digit;
 	long long	num;
