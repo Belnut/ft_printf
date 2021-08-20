@@ -6,7 +6,7 @@
 /*   By: hwon <ohj8447@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 22:26:34 by hwon              #+#    #+#             */
-/*   Updated: 2021/07/26 19:31:58 by hwon             ###   ########.fr       */
+/*   Updated: 2021/07/26 21:40:29 by hwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_vprintf(t_format_info *info, va_list *va)
 	return (rst);
 }
 
-int	ft_format_parsing(const char *str, va_list ap)
+int	ft_format_parsing(const char *str, va_list va)
 {
 	int				rst;
 	t_format_info	*info;	
@@ -48,7 +48,7 @@ int	ft_format_parsing(const char *str, va_list ap)
 			if (!info)
 				break ;
 			str += info->format_len;
-			rst += ft_vprintf(info, &ap);
+			rst += ft_vprintf(info, &va);
 			ft_delete_format_info(&info);
 		}
 		else
